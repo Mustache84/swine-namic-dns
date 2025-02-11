@@ -964,7 +964,7 @@
 				case 'porkbun':
 				case 'porkbun-v6':
 					// API documentation: https://porkbun.com/api/json/v3/documentation
-					$porkbun_api = "https://porkbun.com/api/json/v3/dns/retrieve/{$this->_dnsDomain}";
+					$porkbun_api = "https://api.porkbun.com/api/json/v3/dns/retrieve/{$this->_dnsDomain}";
 					$record_type = $this->_useIPv6 ? "AAAA" : "A";
 					// Check if a record already exists for this host.
 					$post_data['apikey'] = $this->_dnsUser;
@@ -999,13 +999,13 @@
 					// No record exists for this host, add one.
 					if (!$record_id)
 					{
-						$porkbun_api = "https://porkbun.com/api/json/v3/dns/create/{$this->_dnsDomain}";
+						$porkbun_api = "https://api.porkbun.com/api/json/v3/dns/create/{$this->_dnsDomain}";
 						if ($this->_dnsHost == "@" || $this->_dnsHost == "")
 							$post_data['name'] = "";
 						else
 							$post_data['name'] = $this->_dnsHost;
 					} else {
-						$porkbun_api = "https://porkbun.com/api/json/v3/dns/edit/{$this->_dnsDomain}/{$record_id}";
+						$porkbun_api = "https://api.porkbun.com/api/json/v3/dns/edit/{$this->_dnsDomain}/{$record_id}";
 						$post_data['name'] = $this->_dnsHost;
 					}
 					$post_data['type'] = $record_type;
